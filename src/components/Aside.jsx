@@ -1,10 +1,13 @@
-import React from "react";
-
-function Aside() {
+function Aside(props) {
   return (
+    // cannot use for loop
     <aside>
       <h3>Roster:</h3>
-      <ol></ol>
+      <ol>
+        {props.dogs.map(
+          (dog) => dog.present && <li key={dog.name}>{dog.name}</li>
+        )}
+      </ol>
     </aside>
   );
 }
