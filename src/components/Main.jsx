@@ -1,6 +1,7 @@
 import Button from "./Button";
+import ListItem from "./ListItem";
 // I can store a helper function in a different file and import the function into this file to use in my component
-import { getAverage } from "../helpers/helper";
+// import { getAverage } from "../helpers/helper";
 
 // I can create a helper function to show calculations in my JSX
 // const getAverage = (dogArray) => {
@@ -12,7 +13,8 @@ import { getAverage } from "../helpers/helper";
 // };
 
 function Main(props) {
-  const average = getAverage(props.dogs);
+  console.log("main", props);
+  const average = props.getAverage(props.dogs);
   return (
     <main>
       <h2>Class Average: {average}</h2>
@@ -22,7 +24,11 @@ function Main(props) {
       <Button name={"Submit"} color={"green"} />
       <Button name={"Cancel"} color={"red"} />
       <Button name={"Pay Now"} color={"orange"} />
-      <ul></ul>
+      <ul>
+        {props.dogs.map((dog) => {
+          return <ListItem key={dog.name} dog={dog} />;
+        })}
+      </ul>
     </main>
   );
 }

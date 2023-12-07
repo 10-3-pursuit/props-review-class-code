@@ -8,14 +8,18 @@
 
 // I cannot use an 'if' statement in JSX so I must use a ternary if I am deciding which information in my .map function should be rendered in the browser
 
-function Aside(props) {
+function Aside({ date, dogs }) {
+  // const { date, dogs } = props;
+
   return (
     // cannot use for loop
     <aside>
+      {/* I want to put a date here */}
+      <h2>Today's Date: {date}</h2>
       <h3>Roster:</h3>
       <ol>
-        {props.dogs.map((dog) =>
-          dog.present ? <li key={dog.name}>{dog.name}</li> : null
+        {dogs.map(({ present, name }) =>
+          present ? <li key={name}>{name}</li> : null
         )}
       </ol>
     </aside>
